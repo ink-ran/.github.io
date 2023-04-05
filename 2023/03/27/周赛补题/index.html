@@ -14,7 +14,7 @@
 <meta property="og:description" content="acwing第72场周赛T1 4944.热身计算123456789#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;int main()&amp;#123;    int a,b;    cin&gt;&gt;a&gt;&gt;b;    printf(&quot;%d %d\n&quot;,min(a,b),abs(">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-27T23:25:18.000Z">
-<meta property="article:modified_time" content="2023-04-04T14:50:47.995Z">
+<meta property="article:modified_time" content="2023-04-05T07:33:38.363Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -138,11 +138,21 @@
 <p>由此可得：选相差更大的得分获得的得分更大</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">int</span> <span class="title function_">miceAndCheese</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; reward1, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; reward2, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">int</span> n=reward1.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&gt; a(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) </span><br><span class="line">        &#123;</span><br><span class="line">            a[i].push_back(reward1[i]-reward2[i]);</span><br><span class="line">            a[i].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(a.begin(),a.end());</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k&gt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum+=reward1[a[i][<span class="number">1</span>]];</span><br><span class="line">                k--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> sum+=reward2[a[i][<span class="number">1</span>]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="T4-2612-最少翻转操作数"><a href="#T4-2612-最少翻转操作数" class="headerlink" title="T4 2612.最少翻转操作数"></a>T4 2612.最少翻转操作数</h2>
+<h2 id="T4-2612-最少翻转操作数"><a href="#T4-2612-最少翻转操作数" class="headerlink" title="T4 2612.最少翻转操作数"></a>T4 2612.最少翻转操作数</h2><p>1.对于子数组 [L,R] 中的任意下标 i，翻转后的下标是 L+R−i。</p>
+<p>​    (1).当子数组向右滑动时，L 和 R 都增加 1，所以翻转后的下标会增加 2<br>​    (2).当子数组向左滑动时，L 和 R 都减少 1，所以翻转后的下标会减少 2<br>因此，i翻转后的所有位置组成了一个公差为 2 的等差数列</p>
+<ol start="2">
+<li><p>(1).如果不考虑数组的边界，那么范围是 [i−k+1,i+k−1]。<br>(2).如果 i 在数组左边界 0 附近，小于 k−i−1 的点无法翻转到；<br>(3).如果 i在数组右边界 n−1 附近，大于2n−k−i−1 的点无法翻转到。<br>   $$<br>   [min(i-k+1,k-i-1),max(i+k-1,2n-k-i-1)]<br>   $$</p>
+</li>
+<li><p>用两棵平衡树分别维护不等于 p也不在banned中的偶数下标和奇数下标。</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">minReverseOperations</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> p, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; banned, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="type">int</span>,<span class="type">int</span>&gt; m;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;banned.size();i++) m[banned[i]]=<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="type">int</span>&gt; sets[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i!=p&amp;&amp;m[i]!=<span class="number">1</span>) sets[i%<span class="number">2</span>].insert(i);<span class="comment">//建立平衡树</span></span><br><span class="line">        &#125;</span><br><span class="line">        sets[<span class="number">0</span>].insert(n);</span><br><span class="line">        sets[<span class="number">1</span>].insert(n);<span class="comment">//保证后面查找的时候不越界</span></span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">        q.push(p);</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">b</span><span class="params">(n,<span class="number">-1</span>)</span>;<span class="comment">//长度为n，元素值为-1的数组</span></span><br><span class="line">        b[p]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(q.size())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> i=q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="type">int</span> l=max(i-k+<span class="number">1</span>,k-i<span class="number">-1</span>);</span><br><span class="line">            <span class="type">int</span> r=min(i+k<span class="number">-1</span>,n*<span class="number">2</span>-k-i<span class="number">-1</span>);<span class="comment">///区间范围</span></span><br><span class="line">            <span class="keyword">auto</span> &amp;s = sets[l % <span class="number">2</span>];<span class="comment">//确定在哪棵树寻找（因为是一个为二的等差数列）</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> it = s.lower_bound(l); *it &lt;= r; it = s.erase(it))<span class="comment">//查找满足的点，并删除</span></span><br><span class="line">            &#123;</span><br><span class="line">                b[*it]=b[i]+<span class="number">1</span>;<span class="comment">//到达这个点需要的步数</span></span><br><span class="line">                q.push(*it);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/27/%E5%91%A8%E8%B5%9B%E8%A1%A5%E9%A2%98/" data-id="clg2do34h0005bsoi6xlmcbxq" data-title="周赛补题" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/03/27/%E5%91%A8%E8%B5%9B%E8%A1%A5%E9%A2%98/" data-id="clg3dhqy80005dnoi466c0q3r" data-title="周赛补题" class="article-share-link">Share</a>
       
       
       
@@ -152,11 +162,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2023/04/04/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/04/04/%E8%A1%A5%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Hello World
+          补题
         
       </div>
     </a>
@@ -202,11 +212,11 @@
       <ul>
         
           <li>
-            <a href="/2023/04/04/%E8%A1%A5%E9%A2%98/">补题</a>
+            <a href="/2023/04/05/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/2023/04/04/hello-world/">Hello World</a>
+            <a href="/2023/04/04/%E8%A1%A5%E9%A2%98/">补题</a>
           </li>
         
           <li>
