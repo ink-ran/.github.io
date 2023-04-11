@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>蓝桥杯 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="统计子矩阵12345678910111213141516171819202122232425262728293031323334353637383940414243#include &lt;iostream&gt;using namespace std;const int N&#x3D;510;long long a[N][N];int main()&amp;#123;	int n,m,k;	cin&gt;&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯">
+<meta property="og:url" content="http://example.com/2023/03/27/%E8%93%9D%E6%A1%A5%E6%9D%AF/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="统计子矩阵12345678910111213141516171819202122232425262728293031323334353637383940414243#include &lt;iostream&gt;using namespace std;const int N&#x3D;510;long long a[N][N];int main()&amp;#123;	int n,m,k;	cin&gt;&gt;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-27T23:21:11.000Z">
+<meta property="article:modified_time" content="2023-04-11T07:29:47.416Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-蓝桥杯" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/27/%E8%93%9D%E6%A1%A5%E6%9D%AF/" class="article-date">
+  <time class="dt-published" datetime="2023-03-27T23:21:11.000Z" itemprop="datePublished">2023-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      蓝桥杯
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="统计子矩阵"><a href="#统计子矩阵" class="headerlink" title="统计子矩阵"></a>统计子矩阵</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">510</span>;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> a[N][N];</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> n,m,k;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%lld &quot;</span>,&amp;a[i][j]);</span><br><span class="line">			a[i][j]+=a[i<span class="number">-1</span>][j]+a[i][j<span class="number">-1</span>]-a[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//开始行x1</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;=n;j++)<span class="comment">//截止行x2</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> y=<span class="number">1</span>;<span class="comment">//开始列y1      这题也可以说是另类的减枝了，其实也就是4个循环的意思，只是把一层循环换了一种方式表达</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">1</span>;x&lt;=m;x++)<span class="comment">//截止列y2</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">while</span>(a[j][x]-a[j][y<span class="number">-1</span>]-a[i<span class="number">-1</span>][x]+a[i<span class="number">-1</span>][y<span class="number">-1</span>]&gt;k&amp;&amp;y&lt;=x)<span class="comment">//判断该矩阵的和是否小于k</span></span><br><span class="line">					     <span class="comment">//大于y++，说明当前矩阵不满足条件</span></span><br><span class="line">					     <span class="comment">//小于，结束。说明现在这个矩阵从y-x间的矩阵都一定满足条件</span></span><br><span class="line">				&#123;</span><br><span class="line">					y++;</span><br><span class="line">				&#125;</span><br><span class="line">				sum+=x-y+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,sum);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在这要搞明白一点，每次的判断只与当前行j(x2)有关，什么意思呢</span></span><br><span class="line"><span class="comment">//就是关于j-1行的已经求过了，不用再算</span></span><br><span class="line"><span class="comment">//例题：</span></span><br><span class="line"><span class="comment">//当i=1，j=1时，有10种情况  //x=4时，(1,1)-(1,4)&lt;=k,说明有(1,1)-(1,4),(1,2)-(1,4),(1,3)-(1,4),(1,4)-(1,4)这4种情况满足条件</span></span><br><span class="line"><span class="comment">//i=1，j=2时，x=1,有一种情况(1,1)-(2,1)  x=2时，因为(1,1)-(2,2)大于k，y++,此时(1,2)-(2,2)小于k，加一</span></span><br><span class="line"><span class="comment">//i=2,j=2,x=1时，可求得(2,1)-(2,1),(2,2)-(2,2),(2,3)-(2,3)</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/27/%E8%93%9D%E6%A1%A5%E6%9D%AF/" data-id="clgbxzyrj0007biojexob4511" data-title="蓝桥杯" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/03/27/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          算法基础课
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/27/2023%E6%8E%92%E4%BD%8D%E8%B5%9B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2023排位赛</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/11/%E5%8A%9B%E6%89%A3%E5%8F%8C%E5%91%A8%E8%B5%9B/">力扣双周赛</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/11/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">力扣周赛</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/11/Acwing%E5%91%A8%E8%B5%9B/">Acwing周赛</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/27/%E5%91%A8%E8%B5%9B%E8%A1%A5%E9%A2%98/">周赛补题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
