@@ -14,7 +14,7 @@
 <meta property="og:description" content="第334场周赛6367.求出最多标记下标如果可以匹配 k 对，那么也可以匹配小于 k 对，去掉一些数对即可做到。 如果无法匹配 k 对，那么也无法匹配大于 k 对 双指针 123456789int n&#x3D;nums.size();sort(nums.begin(),nums.end());int j&#x3D;0;int sum&#x3D;(n+1)&#x2F;2;for(int i&#x3D;(n+1)&#x2F;2;i&lt;n;i++)&amp;#12">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-11T15:24:17.000Z">
-<meta property="article:modified_time" content="2023-04-12T06:12:34.751Z">
+<meta property="article:modified_time" content="2023-04-12T06:24:34.598Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -130,16 +130,11 @@
 <p>意思：3：11，2：10 减完为01&#x3D;1，所以用异或</p>
 <p>1.计算前缀和</p>
 <p>2.建立哈希，只有两个相同的数异或结果为零。</p>
-<pre><code>          规律：          相同的数的数量               组队                 添加数
-
-                                              1                               0                          0
-
-                                              2                               1                          1
-
-                                              3                               3                           2
-
-                                              4                               6                            3
-</code></pre>
+<p> 规律：          相同的数的数量               组队                 添加数</p>
+<p>​                             0                                  0                        1 </p>
+<p>​                             1                                  1                        2</p>
+<p>​                             3                                  2                        3</p>
+<p>​                             6                                  3                        4</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> a[<span class="number">100010</span>];</span><br><span class="line">public:</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> <span class="title function_">beautifulSubarrays</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> n=nums.size();</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            a[i]=a[i<span class="number">-1</span>]^nums[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="type">int</span>,<span class="type">int</span>&gt; m;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum+=m[a[j]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
@@ -157,15 +152,14 @@
 <p>如果i分给第一只老鼠，j分给第二只老鼠，得分&#x3D;reward1[i]+reward2[j]</p>
 <p>如果i分给第一只老鼠，j分给第二只老鼠，得分&#x3D;reward1[j]+reward2[i]</p>
 <p>若第一种方法得分更大则有：reward1[i]+reward2[j]&gt;reward1[j]+reward2[i]</p>
-<pre><code>                                      --&gt;reward1[i]-reward2[i]&gt;reward1[j]-reward2[j]
-</code></pre>
+<p>​                                          –&gt;reward1[i]-reward2[i]&gt;reward1[j]-reward2[j]</p>
 <p>由此可得：选相差更大的得分获得的得分更大</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">int</span> <span class="title function_">miceAndCheese</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; reward1, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; reward2, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">int</span> n=reward1.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&gt; a(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) </span><br><span class="line">        &#123;</span><br><span class="line">            a[i].push_back(reward1[i]-reward2[i]);</span><br><span class="line">            a[i].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(a.begin(),a.end());</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k&gt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum+=reward1[a[i][<span class="number">1</span>]];</span><br><span class="line">                k--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> sum+=reward2[a[i][<span class="number">1</span>]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/" data-id="clgdaoiym0003fvoz2fi1eyrw" data-title="力扣周赛" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/" data-id="clgdb3w8z0003dyoxgm5v01k3" data-title="力扣周赛" class="article-share-link">Share</a>
       
       
       
@@ -225,6 +219,10 @@
       <ul>
         
           <li>
+            <a href="/2023/04/12/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>
+          </li>
+        
+          <li>
             <a href="/2023/04/12/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/">算法基础课</a>
           </li>
         
@@ -238,10 +236,6 @@
         
           <li>
             <a href="/2023/04/11/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">力扣周赛</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/11/Acwing%E5%91%A8%E8%B5%9B/">Acwing周赛</a>
           </li>
         
       </ul>
