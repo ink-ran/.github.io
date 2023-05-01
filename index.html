@@ -74,7 +74,7 @@
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/05/01/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-05-01T11:16:55.172Z" itemprop="datePublished">2023-05-01</time>
+  <time class="dt-published" datetime="2023-05-01T11:21:30.805Z" itemprop="datePublished">2023-05-01</time>
 </a>
     
   </div>
@@ -110,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/05/01/hello-world/" data-id="clh4qx3vk0002c4oqelu63tyz" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/05/01/hello-world/" data-id="clh4r30z90002djoyda56ejty" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -184,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/12/%E5%91%A8%E8%B5%9B%E8%A1%A5%E9%A2%98/" data-id="clh4qx3vo0005c4oq5zc8akcz" data-title="周赛补题" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/12/%E5%91%A8%E8%B5%9B%E8%A1%A5%E9%A2%98/" data-id="clh4r30zc0005djoy0lv6d73e" data-title="周赛补题" class="article-share-link">Share</a>
       
       
       
@@ -241,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/12/%E8%93%9D%E6%A1%A5%E6%9D%AF/" data-id="clh4qx3vq0007c4oqcgwv95nn" data-title="蓝桥杯" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/12/%E8%93%9D%E6%A1%A5%E6%9D%AF/" data-id="clh4r30ze0007djoy8p3phim5" data-title="蓝桥杯" class="article-share-link">Share</a>
       
       
       
@@ -524,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/12/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/" data-id="clh4qx3vp0006c4oq19bpaqzz" data-title="算法基础课" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/12/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/" data-id="clh4r30zd0006djoyhsm6hz0j" data-title="算法基础课" class="article-share-link">Share</a>
       
       
       
@@ -592,7 +592,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-id="clh4qx3vm0003c4oq2gga15jh" data-title="力扣双周赛" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-id="clh4r30za0003djoy2ahx8svo" data-title="力扣双周赛" class="article-share-link">Share</a>
       
       
       
@@ -687,10 +687,17 @@
 <p>由此可得：选相差更大的得分获得的得分更大</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">int</span> <span class="title function_">miceAndCheese</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; reward1, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; reward2, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">int</span> n=reward1.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&gt; a(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) </span><br><span class="line">        &#123;</span><br><span class="line">            a[i].push_back(reward1[i]-reward2[i]);</span><br><span class="line">            a[i].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(a.begin(),a.end());</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k&gt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum+=reward1[a[i][<span class="number">1</span>]];</span><br><span class="line">                k--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> sum+=reward2[a[i][<span class="number">1</span>]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<h1 id="第343场周赛"><a href="#第343场周赛" class="headerlink" title="第343场周赛"></a>第343场周赛</h1><h2 id="6343-前往目标的最小代价"><a href="#6343-前往目标的最小代价" class="headerlink" title="6343.前往目标的最小代价"></a>6343.前往目标的最小代价</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    using LL=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="type">long</span> <span class="type">long</span>,<span class="type">int</span>&gt; m;</span><br><span class="line">    <span class="built_in">unordered_set</span>&lt;<span class="type">long</span> <span class="type">long</span>&gt; s;<span class="comment">//相当于bool st[N]</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">int</span> <span class="title function_">minimumCost</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; start, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; target, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&gt;&amp; specialRoads)</span> &#123;</span><br><span class="line">        <span class="type">int</span> n=specialRoads.size();</span><br><span class="line">        LL end=(LL)target[<span class="number">0</span>]&lt;&lt;<span class="number">32</span>|target[<span class="number">1</span>];</span><br><span class="line">        m[(LL)start[<span class="number">0</span>]&lt;&lt;<span class="number">32</span>|start[<span class="number">1</span>]]=<span class="number">0</span>;</span><br><span class="line">        m[end]=<span class="built_in">abs</span>(start[<span class="number">0</span>]-target[<span class="number">0</span>])+<span class="built_in">abs</span>(start[<span class="number">1</span>]-target[<span class="number">1</span>]);<span class="comment">//题解写的是 unordered_map&lt;LL, int&gt; dis = &#123;&#123;(LL) start[0] &lt;&lt; 32 | start[1], 0&#125;, &#123;t, INT_MAX&#125;&#125;;  如果换成我的写法在start==target时，m[end]会被替换成INT_MAX就不对了，用题解的方法就不会替换，要看unordered_map的内部实现了，但换成我现在的写法就不会有问题，因为不管是否替换，m[end]都是最大值(就是不用传送点的情况，当然也有比m[end]大的值出现，但我不取，所以这时的m[end]就一定会是我这个算法中的最大值)</span></span><br><span class="line">        <span class="keyword">for</span>(;;)<span class="comment">//无限循环</span></span><br><span class="line">        &#123;</span><br><span class="line">            LL w=<span class="number">-1</span>;<span class="comment">//头节点到最短代价的未取过节点</span></span><br><span class="line">            <span class="type">int</span> di=<span class="number">-1</span>;<span class="comment">//距离</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> t:m)<span class="comment">//找到最小代价的节点</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(!s.count(t.first)&amp;&amp;(di&lt;<span class="number">0</span>||t.second&lt;di))</span><br><span class="line">                &#123;</span><br><span class="line">                    w=t.first;</span><br><span class="line">                    di=t.second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(w==end) <span class="keyword">return</span> m[end];<span class="comment">//当前最小代价的节点为尾节点的时候，头节点到尾节点的代价最短</span></span><br><span class="line">            s.insert(w);<span class="comment">//相当于st[w]=true;</span></span><br><span class="line">            <span class="type">int</span> x=w&gt;&gt;<span class="number">32</span>,y=w&amp;UINT32_MAX;<span class="comment">//取出坐标</span></span><br><span class="line">            m[end]=min(m[end],di+<span class="built_in">abs</span>(target[<span class="number">0</span>]-x)+<span class="built_in">abs</span>(target[<span class="number">1</span>]-y));<span class="comment">//判断当前坐标直接到结束点的代价是否更小，更小的话更新</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">int</span> d=di+<span class="built_in">abs</span>(specialRoads[i][<span class="number">0</span>]-x)+<span class="built_in">abs</span>(specialRoads[i][<span class="number">1</span>]-y)+specialRoads[i][<span class="number">4</span>];<span class="comment">//当前节点到i的传送节点的传送完的节点的代价</span></span><br><span class="line">                LL j=(LL)specialRoads[i][<span class="number">2</span>]&lt;&lt;<span class="number">32</span>|specialRoads[i][<span class="number">3</span>];</span><br><span class="line">                <span class="keyword">if</span>(!m.count(j)||d&lt;m[j])<span class="comment">//使用了当前传送点的代价小于之前m[j]的代价时更新</span></span><br><span class="line">                &#123;</span><br><span class="line">                    m[j]=d;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6344-字典序最小的美丽字符串"><a href="#6344-字典序最小的美丽字符串" class="headerlink" title="6344.字典序最小的美丽字符串"></a>6344.字典序最小的美丽字符串</h2><p>判断回文：长度为 m的回文串必然包含长度为 m-2 的回文串。换句话说，不能出现s[i]&#x3D;s[i-1]以及s[i]&#x3D;s[i-2]</p>
+<p>字典序最小，那么修改的位置越靠右越好</p>
+<p>如果计算过程中出现把s[0]加一后不在前 k个字母中的情况，说明答案不存在，返回空字符串。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="built_in">string</span> <span class="title function_">smallestBeautifulString</span><span class="params">(<span class="built_in">string</span> s, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        k+=<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="type">int</span> n=s.size();</span><br><span class="line">        <span class="type">int</span> i=n<span class="number">-1</span>;</span><br><span class="line">        ++s[i];<span class="comment">//从最后开始改变</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i]==k)<span class="comment">//超出范围</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;<span class="comment">//不可进位</span></span><br><span class="line">                s[i]=<span class="string">&#x27;a&#x27;</span>;<span class="comment">//当前位置变为&#x27;a&#x27;</span></span><br><span class="line">                ++s[--i];<span class="comment">//前一位置加上一</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(i&amp;&amp;s[i]==s[i<span class="number">-1</span>]||i&gt;<span class="number">1</span>&amp;&amp;s[i]==s[i<span class="number">-2</span>]) ++s[i];<span class="comment">//有回文的情况下，当前位再次改变(加1)</span></span><br><span class="line">                <span class="keyword">else</span> ++i;<span class="comment">//都满足的情况下，回到后面，再次查看后面是否满足条件</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/" data-id="clh4qx3vn0004c4oq7vxne2nm" data-title="力扣周赛" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/" data-id="clh4r30zb0004djoydak628li" data-title="力扣周赛" class="article-share-link">Share</a>
       
       
       
@@ -766,7 +773,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/11/Acwing%E5%91%A8%E8%B5%9B/" data-id="clh4qx3vh0001c4oq3mtb306w" data-title="Acwing周赛" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/11/Acwing%E5%91%A8%E8%B5%9B/" data-id="clh4r30z60001djoyheope9n5" data-title="Acwing周赛" class="article-share-link">Share</a>
       
       
       
@@ -823,7 +830,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/27/2023%E6%8E%92%E4%BD%8D%E8%B5%9B/" data-id="clh4qx3va0000c4oqhod74r7z" data-title="2023排位赛" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/03/27/2023%E6%8E%92%E4%BD%8D%E8%B5%9B/" data-id="clh4r30z00000djoyd7my8fc9" data-title="2023排位赛" class="article-share-link">Share</a>
       
       
       
