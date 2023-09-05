@@ -71,10 +71,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-算法提高课" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/05/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE/" class="article-date">
+  <time class="dt-published" datetime="2023-09-05T21:04:53.000Z" itemprop="datePublished">2023-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/05/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE/">算法提高课</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="第六讲"><a href="#第六讲" class="headerlink" title="第六讲"></a>第六讲</h1><h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><h3 id="90-64位整数乘法"><a href="#90-64位整数乘法" class="headerlink" title="90.64位整数乘法"></a>90.64位整数乘法</h3><p>将乘法变为加法</p>
+<p>如5*35&#x3D;&#x3D;5+5+……+5，要加上35个5的话，可以将35变为2进制，有1的位置代表当前的结果中要加上2ⁿ个5，如何求这2ⁿ个5呢？就是每次的结果相加就是下一个的结果了，举例：1&#x3D;5，2&#x3D;5+5，4&#x3D;10+10，8&#x3D;20+20……，2ⁿ&#x3D;2ⁿ⁻¹+2ⁿ⁻¹</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a,b,p;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld %lld %lld\n&quot;</span>,&amp;a,&amp;b,&amp;p);</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;b!=<span class="number">0</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b%<span class="number">2</span>) res=(res+a)%p;<span class="comment">//当前要加上2ⁿ个a</span></span><br><span class="line">        a=(a+a)%p;<span class="comment">//求2ⁿ⁺个a的结果</span></span><br><span class="line">        b/=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="递推与递归"><a href="#递推与递归" class="headerlink" title="递推与递归"></a>递推与递归</h2><h3 id="95-费解的开关"><a href="#95-费解的开关" class="headerlink" title="95.费解的开关"></a>95.费解的开关</h3><p>固定第一行的开关，下一行要按的开关就可以由第一行的开关所决定，下一行要按的就是第一行未开灯的同一列的那个开关，只有这样第一行的开关才能全部亮起。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">char</span> a[<span class="number">10</span>][<span class="number">10</span>],fb[<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"><span class="type">int</span> dx[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,dy[<span class="number">5</span>]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="type">int</span> d;</span><br><span class="line"><span class="type">void</span> <span class="title function_">turn</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> t=<span class="number">0</span>;t&lt;<span class="number">5</span>;t++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x=dx[t]+i,y=dy[t]+j;</span><br><span class="line">        <span class="keyword">if</span>(x&gt;=<span class="number">0</span>&amp;&amp;x&lt;<span class="number">5</span>&amp;&amp;y&gt;=<span class="number">0</span>&amp;&amp;y&lt;<span class="number">5</span>)</span><br><span class="line">            <span class="keyword">if</span>(fb[x][y]==<span class="string">&#x27;0&#x27;</span>) fb[x][y]=<span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">            <span class="keyword">else</span> fb[x][y]=<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d\n&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">0</span>;x&lt;<span class="number">5</span>;x++) <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,&amp;a[x]);</span><br><span class="line">        d=<span class="number">10</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> p=<span class="number">0</span>;p&lt;<span class="number">32</span>;p++)<span class="comment">//遍历第一行的所有可能性，无非就是当前开关按还是不按</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">            <span class="built_in">memcpy</span>(fb,a,<span class="keyword">sizeof</span> fb);</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(p&gt;&gt;i&amp;<span class="number">1</span>)<span class="comment">//0~31的二进制可以遍历所有情况，在这我们只需要把1当作要按的就可以了</span></span><br><span class="line">                &#123;</span><br><span class="line">                    turn(<span class="number">0</span>,i);</span><br><span class="line">                    res++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">5</span>;i++)<span class="comment">//第一行已固定，将剩下四行按同一规律变换</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">5</span>;j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(fb[i<span class="number">-1</span>][j]==<span class="string">&#x27;0&#x27;</span>) </span><br><span class="line">                    &#123;</span><br><span class="line">                        turn(i,j);</span><br><span class="line">                        res++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> flag=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++) <span class="comment">//判断当前的最后一行是否全为开，只需要判断最后一行，因为前面的一定都已经是开的了</span></span><br><span class="line">                <span class="keyword">if</span>(fb[<span class="number">4</span>][i]==<span class="string">&#x27;0&#x27;</span>) flag=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(flag==<span class="number">0</span>&amp;&amp;res&lt;=<span class="number">6</span>) d=min(d,res);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(d==<span class="number">10</span>) <span class="built_in">puts</span>(<span class="string">&quot;-1&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,d);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="97-约数之和"><a href="#97-约数之和" class="headerlink" title="97.约数之和"></a>97.约数之和</h3><p>$$<br>a&#x3D;p1^(k1)+p2^(k2)+……+pn^(kn)<br>$$</p>
+<p>a中包含的质数为p1,p2,p3,……,pn</p>
+<p>a的约数个数：(k1+1)*(k2+1)<em>……</em>(kn+1)（为什么加一呢，是因为有p^0）</p>
+<p>a的约数之和：(p1^0+p1^1+……+p1^k)<em>……</em>(pn^0+pn^1+……+pn^k)<br>$$<br>sum(p,k)&#x3D;p1^0+p1^1+……+p1^k<br>$$</p>
+<p>$$<br>&#x3D;(p1^0+…+p1^(k&#x2F;2))+(p1^(k&#x2F;2+1)+…+p1^k)<br>$$</p>
+<p>$$<br>&#x3D;(p1^0+…+p1^(k&#x2F;2))+(p1^(k&#x2F;2+1))(p1^0+…+p1^(k&#x2F;2))<br>$$</p>
+<p>$$<br>&#x3D;(1+p1^(k&#x2F;2+1))(p1^0+…+p1^(k&#x2F;2))<br>$$</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;map&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">int</span> a,b,mod=<span class="number">9901</span>;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="type">int</span>,<span class="type">int</span>&gt; m;</span><br><span class="line"><span class="type">int</span> <span class="title function_">qmi</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span><span class="comment">//快速幂</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> res=<span class="number">1</span>;</span><br><span class="line">    x%=mod;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;y!=<span class="number">0</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=res*x%mod;</span><br><span class="line">        x=x*x%mod;</span><br><span class="line">        y/=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> k)</span><span class="comment">//每个质数的0~k次方的和</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(k%<span class="number">2</span>==<span class="number">0</span>) <span class="keyword">return</span> sum(x,k<span class="number">-1</span>)+qmi(x,k)%mod;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> (<span class="number">1</span>+qmi(x,k/<span class="number">2</span>+<span class="number">1</span>))*sum(x,k/<span class="number">2</span>)%mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d\n&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">    <span class="type">int</span> s=a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=s/i;i++)<span class="comment">//求a中包含的质数和相应的次数</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(s%i==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            s/=i;</span><br><span class="line">            m[i]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(s&gt;<span class="number">1</span>) m[s]++;</span><br><span class="line">    <span class="type">int</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> t:m)<span class="comment">//相乘</span></span><br><span class="line">    &#123;</span><br><span class="line">        res=res*sum(t.first,t.second*b)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a==<span class="number">0</span>) res=<span class="number">0</span>;<span class="comment">//te&#x27;shu</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="98-分形之城"><a href="#98-分形之城" class="headerlink" title="98.分形之城"></a>98.分形之城</h3><h2 id="前缀和与差分"><a href="#前缀和与差分" class="headerlink" title="前缀和与差分"></a>前缀和与差分</h2><h3 id="99-激光炸弹"><a href="#99-激光炸弹" class="headerlink" title="99.激光炸弹"></a>99.激光炸弹</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">5005</span>;</span><br><span class="line"><span class="type">int</span> a[N][N];</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n,r;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d\n&quot;</span>,&amp;n,&amp;r);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x,y,k;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d\n&quot;</span>,&amp;x,&amp;y,&amp;k);</span><br><span class="line">        a[x+<span class="number">1</span>][y+<span class="number">1</span>]+=k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">5001</span>;i++)<span class="comment">//前缀和</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">5001</span>;j++)</span><br><span class="line">            a[i][j]+=a[i<span class="number">-1</span>][j]+a[i][j<span class="number">-1</span>]-a[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">    r=min(r,<span class="number">5001</span>);</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">5001</span>-r+<span class="number">1</span>;i++)<span class="comment">//画一个r*r的正方形，求出这个正方形中的总价值</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">5001</span>-r+<span class="number">1</span>;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> x2=i+r<span class="number">-1</span>,y2=j+r<span class="number">-1</span>;</span><br><span class="line">            res=max(res,(<span class="type">long</span> <span class="type">long</span>)a[x2][y2]-a[i<span class="number">-1</span>][y2]-a[x2][j<span class="number">-1</span>]+a[i<span class="number">-1</span>][j<span class="number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="100-递减序列"><a href="#100-递减序列" class="headerlink" title="100.递减序列"></a>100.递减序列</h3><h4 id="关于结果总数为什么是这个尚不清楚"><a href="#关于结果总数为什么是这个尚不清楚" class="headerlink" title="关于结果总数为什么是这个尚不清楚"></a>关于结果总数为什么是这个尚不清楚</h4><p>可进行的区间改变方案有</p>
+<ol>
+<li>2&lt;&#x3D;i,j&lt;&#x3D;n           改变[i,j]之间的值</li>
+<li>i&#x3D;1,2&lt;&#x3D;j&lt;&#x3D;n       改变某个前缀</li>
+<li>2&lt;&#x3D;i&lt;&#x3D;n,j&#x3D;n+1   改变某个后缀</li>
+<li>i&#x3D;1,j&#x3D;n+1            整个序列加上(减去)某个数</li>
+</ol>
+<p>l:差分数组中正数的总和             r:差分数组中负数的总和</p>
+<p>最少操作次数：min(l,abs(r))+abs(l-abs(r))</p>
+<p>最终能得到的结果总数：abs(l-abs(r)))</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> a[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d\n&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%lld &quot;</span>,&amp;a[i]);</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> l=<span class="number">0</span>,r=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;<span class="number">1</span>;i--) <span class="comment">//求差分，并计算正数总和和负数总和</span></span><br><span class="line">    &#123;</span><br><span class="line">        a[i]=a[i]-a[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(a[i]&gt;=<span class="number">0</span>) l+=a[i];</span><br><span class="line">        <span class="keyword">else</span> r+=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=min(l,<span class="built_in">abs</span>(r));</span><br><span class="line">    res+=<span class="built_in">abs</span>(l-<span class="built_in">abs</span>(r));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n%lld\n&quot;</span>,res,<span class="built_in">abs</span>(l-<span class="built_in">abs</span>(r))+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><h3 id="102-最佳牛围栏"><a href="#102-最佳牛围栏" class="headerlink" title="102.最佳牛围栏"></a>102.最佳牛围栏</h3><p>求出平均值的范围（不考虑要围多少）</p>
+<p>二分：</p>
+<p>先求出这些数在减去当前平均值的时候的前缀和，这时的s数组中的数要是为正数说明当前1<del>i的平均值大于当前平均值，为负数说明1</del>i的平均值小于当前平均值</p>
+<p>因为题目要求了最低围度，所以要满足s[j]&gt;&#x3D;s[i]，i只要是小于j-f的就行</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">100010</span>;</span><br><span class="line"><span class="type">int</span> n,f;</span><br><span class="line"><span class="type">double</span> a[N],s[N];</span><br><span class="line"><span class="type">bool</span> <span class="title function_">check</span><span class="params">(<span class="type">double</span> avg)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) s[i]=s[i<span class="number">-1</span>]+a[i]-avg;<span class="comment">//前缀和</span></span><br><span class="line">    <span class="type">double</span> m=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=f;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        m=min(m,s[i-f]);<span class="comment">//范围至少为f个，如果m比s[i-f]小，说明当前围的范围比f大，但是也比f的平均值要更大</span></span><br><span class="line">        <span class="keyword">if</span>(s[i]&gt;=m) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d\n&quot;</span>,&amp;n,&amp;f);</span><br><span class="line">    <span class="type">double</span> l=<span class="number">0</span>,r=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lf\n&quot;</span>,&amp;a[i]);</span><br><span class="line">        r=max(r,a[i]);<span class="comment">//最大的情况就是围一个最大的数，这不一定满足条件，但我们说的是无论围多少的时候的最大情况</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(r-l&gt;<span class="number">1e-5</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(check(mid)) l=mid;</span><br><span class="line">        <span class="keyword">else</span> r=mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,(<span class="type">int</span>)(r*<span class="number">1000</span>));<span class="comment">//留意一下改类型前要加个括号先</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/09/05/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE/" data-id="clm6bs1zh0007dgq0gf7o6x9b" data-title="算法提高课" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/09/05/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-09-05T13:04:43.124Z" itemprop="datePublished">2023-09-05</time>
+  <time class="dt-published" datetime="2023-09-05T13:07:02.560Z" itemprop="datePublished">2023-09-05</time>
 </a>
     
   </div>
@@ -110,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/09/05/hello-world/" data-id="clm6boz2m0002dhoze94dg7l5" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/09/05/hello-world/" data-id="clm6bs1za0002dgq0c77rb4pa" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -170,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/12/%E5%91%A8%E8%B5%9B%E8%A1%A5%E9%A2%98/" data-id="clm6boz2p0005dhoz9dre0iy5" data-title="周赛补题" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/12/%E5%91%A8%E8%B5%9B%E8%A1%A5%E9%A2%98/" data-id="clm6bs1ze0005dgq0d3g8fnlt" data-title="周赛补题" class="article-share-link">Share</a>
       
       
       
@@ -238,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/12/%E8%93%9D%E6%A1%A5%E6%9D%AF/" data-id="clm6boz2r0007dhozf3nlckyf" data-title="蓝桥杯" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/12/%E8%93%9D%E6%A1%A5%E6%9D%AF/" data-id="clm6bs1zi0008dgq0dxnwh7wd" data-title="蓝桥杯" class="article-share-link">Share</a>
       
       
       
@@ -575,7 +651,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/12/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/" data-id="clm6boz2q0006dhoz4gu7cs8f" data-title="算法基础课" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/12/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/" data-id="clm6bs1zf0006dgq0b35b9k9w" data-title="算法基础课" class="article-share-link">Share</a>
       
       
       
@@ -643,7 +719,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-id="clm6boz2n0003dhoz1u390mb6" data-title="力扣双周赛" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-id="clm6bs1zc0003dgq00qfe5tth" data-title="力扣双周赛" class="article-share-link">Share</a>
       
       
       
@@ -748,7 +824,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/" data-id="clm6boz2o0004dhoz5uxug6mv" data-title="力扣周赛" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/11/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/" data-id="clm6bs1zd0004dgq0e9zsb702" data-title="力扣周赛" class="article-share-link">Share</a>
       
       
       
@@ -837,7 +913,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/11/Acwing%E5%91%A8%E8%B5%9B/" data-id="clm6boz2k0001dhoz9bbk038n" data-title="Acwing周赛" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/11/Acwing%E5%91%A8%E8%B5%9B/" data-id="clm6bs1z70001dgq0g2yz93ar" data-title="Acwing周赛" class="article-share-link">Share</a>
       
       
       
@@ -894,7 +970,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/27/2023%E6%8E%92%E4%BD%8D%E8%B5%9B/" data-id="clm6boz2e0000dhozh96gdtla" data-title="2023排位赛" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/03/27/2023%E6%8E%92%E4%BD%8D%E8%B5%9B/" data-id="clm6bs1z00000dgq04m7b42s6" data-title="2023排位赛" class="article-share-link">Share</a>
       
       
       
@@ -937,6 +1013,10 @@
       <ul>
         
           <li>
+            <a href="/2023/09/05/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE/">算法提高课</a>
+          </li>
+        
+          <li>
             <a href="/2023/09/05/hello-world/">Hello World</a>
           </li>
         
@@ -950,10 +1030,6 @@
         
           <li>
             <a href="/2023/04/12/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/">算法基础课</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/11/%E5%8A%9B%E6%89%A3%E5%8F%8C%E5%91%A8%E8%B5%9B/">力扣双周赛</a>
           </li>
         
       </ul>
